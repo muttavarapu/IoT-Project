@@ -8,7 +8,7 @@ module.exports = function(app) {
     .post(switchList.create_a_switch);
 
 
-  app.route('/switchs/:switchId')
+  app.route('/switch/:switchId')
     .get(switchList.read_a_switch)
     .put(switchList.update_a_switch)
     .delete(switchList.delete_a_switch);
