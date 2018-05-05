@@ -1,6 +1,6 @@
 'use strict';
 
-
+//const util = require('util');
 var mongoose = require('mongoose'),
   Switch = mongoose.model('Switches');
 
@@ -14,6 +14,7 @@ exports.list_all_switches = function(req, res) {
 
 exports.create_a_switch = function(req, res) {
   var new_switch = new Switch(req.body);
+  //console.log(util.inspect(req.body, false, null))
   new_switch.save(function(err, iswitch) {
     if (err)
       res.send(err);
