@@ -1,15 +1,30 @@
 'use strict';
 module.exports = function(app) {
-  var switchList = require('../controllers/iotController');
+  var iotController = require('../controllers/iotController');
+  var setPointController = require('../controllers/setPointController');
+  var statusController = require('../controllers/statusController');
 
   // switches Routes
   app.route('/switches')
-    .get(switchList.list_all_switches)
-    .post(switchList.create_a_switch);
+    .get(iotController.list_all_switches)
+    .post(iotController.create_a_switch);
 
 
   app.route('/switch/:switchId')
-    .get(switchList.read_a_switch)
-    .put(switchList.update_a_switch)
-    .delete(switchList.delete_a_switch);
+    .get(iotController.read_a_switch)
+    .put(iotController.update_a_switch)
+    .delete(iotController.delete_a_switch);
+
+
+
+  // status Routes
+  app.route('/status')
+    .get(statusController.read_status)
+    .put(statusController.update_status);
+  // status Routes
+  app.route('/setpoint')
+    .get(setPointController.read_setpoint)
+    .put(setPointController.update_set_point);
+  app.route('/setpointlist')
+    .get(setPointController.read_setpoint_list);
 };
